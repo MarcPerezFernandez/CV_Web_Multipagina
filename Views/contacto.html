@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Carta de Presentación - Marc Pérez Fernández</title>
+    <link rel="stylesheet" href="../Css/estilo.css" />
+</head>
+<body>
+    <h1><img src="../Assets/Logos/LogoNombreOk.png" alt="Marc Pérez Fernández" class="logo-nombre"></h1>
+    <header class="main-header">
+        <div class="nav-container">
+            <nav class="navegador">
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../Views/carta.html">Carta de presentación</a></li>
+                    <li><a class="active" href="contacto.html">Contacto</a></li>
+                    <li><a href="../Views/proyectos.html">Proyectos</a></li>
+                    <li><a href="https://www.linkedin.com/in/marc-pérez-fernández-925b21366" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://github.com/MarcPerezFernandez" target="_blank">GitHub</a></li>
+                    <li><a href="./Assets/pdf CV/CV - Marc Pérez Fernández.pdf" download class="boton-descarga">Descargar PDF</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Información de Contacto</h2>
+            <p><strong>Nombre completo:</strong> Marc Pérez Fernández</p>
+            <p><strong>Dirección:</strong> Caldes d'Estrac (Barcelona), España</p>
+            <p><strong>Teléfono:</strong> +34 675 463 026</p>
+            <p><strong>Email:</strong> <a href="mailto:marcperezfernandez1986@gmail.com">marcperezfernandez1986@gmail.com</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/MarcPerezFernandez" target="_blank">github.com/MarcPerezFernandez</a></p>
+        </section>
+
+        <section>
+            <h2>Formulario de Contacto</h2>
+            <form id="formulario-contacto">
+                <div class="input-contenedor">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    <span class="error" id="nombreError"></span>
+                </div>
+                <div class="input-contenedor">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                    <span class="error" id="telefonoError"></span>
+                </div>
+                <div class="input-contenedor">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error" id="emailError"></span>
+                </div> 
+                <div class="input-contenedor">  
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <div class="button-contenedor">     
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+    <footer class="footer">
+        <div class="footer-icons">
+            <a href="mailto:marcperezfernandez1986@gmail.com" target="_blank" aria-label="Correo">
+                <img src="../Assets/Logos/correo.png" alt="Gmail" />
+            </a>
+            <a href="https://www.linkedin.com/in/marc-pérez-fernández-925b21366" target="_blank" aria-label="LinkedIn">
+                <img src="../Assets/Logos/linkedIn.png" alt="LinkedIn" />
+            </a>
+            <a href="https://github.com/MarcPerezFernandez" target="_blank" aria-label="GitHub">
+                <img src="../Assets/Logos/GitHub.png" alt="GitHub" />
+            </a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="../Js/script.js"></script>
+    <script>
+        (function() {
+            emailjs.init("DiWOawHQcjXSKR63y");
+        })();
+    </script>
+    <script>
+        document.getElementById("formulario-contacto").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm("service_mcuvd6i", "contacto_cv", this)
+            .then(() => {
+                alert("Mensaje enviado correctamente.");
+                this.reset();
+            }, (error) => {
+                console.error("Error al enviar:", error);
+                alert("Hubo un error al enviar el mensaje. Intenta más tarde.");
+            });
+        });
+    </script>
+</body>
+</html>
